@@ -33,6 +33,18 @@ export const AddUser: React.FC<Props> = ({ saveUser }) => {
         placeholder="Sobrenome"
         onChange={handleUserData}
       />
+      <input
+        type="text"
+        id="telefone"
+        placeholder="Telefone"
+        onChange={handleUserData}
+      />
+      <input
+        type="text"
+        id="cpf"
+        placeholder="cpf"
+        onChange={handleUserData}
+      />
       <button disabled={user === undefined ? true : false}>
         Add User
       </button>
