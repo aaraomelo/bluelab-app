@@ -7,10 +7,12 @@ import { createStore, applyMiddleware, Store } from "redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 import reducer from "./store/reducer"
+import { composeWithDevTools } from "redux-devtools-extension"
+import logger from "redux-logger"
 
 const store: Store<UserState, UserAction> & {
   dispatch: DispatchType
-} = createStore(reducer, applyMiddleware(thunk))
+} = createStore(reducer, composeWithDevTools(applyMiddleware(logger ,thunk)))
 
 
 

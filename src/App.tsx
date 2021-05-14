@@ -5,6 +5,7 @@ import { AddUser } from "./components/AddUser"
 import { addUser, removeUser } from "./store/actionCreators"
 import { Dispatch } from "redux"
 import "./App.css"
+import usersService from "./services/user.service"
 
 const App: React.FC = () => {
   const users: readonly IUser[] = useSelector(
@@ -18,6 +19,12 @@ const App: React.FC = () => {
     (user: IUser) => dispatch(addUser(user)),
     [dispatch]
   )
+
+  React.useEffect(() => {
+    console.log(`Component mounted!`);
+    usersService.getAllUsers().then((response)=>{console.log(response);
+    })
+  }, []);
 
   return (
     <main>
