@@ -21,7 +21,7 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     (async () => dispatch(await loadUsers()))()
-  }, []);
+  }, [dispatch]);
 
   return (
     <main>

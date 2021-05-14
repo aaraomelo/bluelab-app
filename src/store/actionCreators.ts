@@ -7,7 +7,7 @@ export async function loadUsers() {
         type: actionTypes.LOAD_USERS,
         users
     }
-    return (dispatch: any) => dispatch(action)
+    return action;
 }
 
 export function addUser(user: IUser) {
@@ -15,7 +15,7 @@ export function addUser(user: IUser) {
         type: actionTypes.ADD_USER,
         user,
     }
-    return simulateHttpRequest(action)
+    return action
 }
 
 export function removeUser(user: IUser) {
@@ -23,7 +23,7 @@ export function removeUser(user: IUser) {
         type: actionTypes.REMOVE_USER,
         user,
     }
-    return simulateHttpRequest(action)
+    return action
 }
 
 export function updateUser(user: IUser) {
@@ -31,13 +31,5 @@ export function updateUser(user: IUser) {
         type: actionTypes.UPDATE_USER,
         user,
     }
-    return simulateHttpRequest(action)
-}
-
-export function simulateHttpRequest(action: UserAction) {
-    return (dispatch: DispatchType) => {
-        setTimeout(() => {
-        dispatch(action)
-        }, 200)
-    }
+    return action
 }
