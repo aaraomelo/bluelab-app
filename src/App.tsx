@@ -2,10 +2,9 @@ import * as React from "react"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { User } from "./components/User"
 import { AddUser } from "./components/AddUser"
-import { addUser, removeUser } from "./store/actionCreators"
+import { addUser, removeUser, loadUsers } from "./store/actionCreators"
 import { Dispatch } from "redux"
 import "./App.css"
-import usersService from "./services/user.service"
 
 const App: React.FC = () => {
   const users: readonly IUser[] = useSelector(
@@ -21,9 +20,7 @@ const App: React.FC = () => {
   )
 
   React.useEffect(() => {
-    console.log(`Component mounted!`);
-    usersService.getAllUsers().then((response)=>{console.log(response);
-    })
+    (async () => dispatch(await loadUsers()))()
   }, []);
 
   return (

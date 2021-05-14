@@ -13,5 +13,10 @@ interface IUser {
     type: string
     user: IUser
   }
+
+  type LoadUsersAction = {
+    type: string
+    users: IUser[]
+  }
   
   type DispatchType = (args: UserAction) => UserAction

@@ -1,27 +1,20 @@
 import * as actionTypes from "./actionTypes"
 
 const initialState: UserState = {
-  users: [
-    {
-        nome: "João",
-        sobrenome: "Carlos",
-        telefone: "11968552211",
-        cpf: "08438794912"
-      },
-      {
-        nome: "Aarão",
-        sobrenome: "Melo",
-        telefone: "11977808883",
-        cpf: "00108240223"
-      }
-  ],
+  users: []
 }
 
 const reducer = (
     state: UserState = initialState,
-    action: UserAction
+    action: any
   ): UserState => {
     switch (action.type) {
+
+      case actionTypes.LOAD_USERS:
+        return {
+          ...state,
+          users: action.users,
+        }
 
       case actionTypes.ADD_USER:
         const newUser: IUser = {
