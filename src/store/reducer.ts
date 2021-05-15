@@ -27,6 +27,11 @@ const reducer = (
           ...state,
           users: state.users.concat(newUser),
         }
+        
+      case actionTypes.ADD_USERS_ERROR:
+        alert(action.message.msg)
+        return state;
+
 
       case actionTypes.REMOVE_USER:
         const updatedUsers: IUser[] = state.users.filter(

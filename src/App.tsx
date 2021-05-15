@@ -15,7 +15,7 @@ const App: React.FC = () => {
   const dispatch: Dispatch<any> = useDispatch()
 
   const saveUser = React.useCallback(
-    (user: IUser) => dispatch(addUser(user)),
+    async (user: IUser) => dispatch(await addUser(user)),
     [dispatch]
   )
 

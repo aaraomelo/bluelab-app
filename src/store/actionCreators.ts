@@ -10,12 +10,23 @@ export async function loadUsers() {
     return action;
 }
 
-export function addUser(user: IUser) {
-    const action: UserAction = {
-        type: actionTypes.ADD_USER,
-        user,
-    }
-    return action
+export async function addUser(user: IUser) {
+
+    return await usersService.addUser(user)
+        .then(() => {
+            const action: UserAction = {
+                type: actionTypes.ADD_USER,
+                user,
+            }
+            return action;
+        })
+        .catch((message) => {
+            const action: AddUsersErrorAction = {
+                type: actionTypes.ADD_USERS_ERROR,
+                message,
+            }
+            return action;
+        })
 }
 
 export function removeUser(user: IUser) {
