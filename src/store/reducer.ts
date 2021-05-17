@@ -1,7 +1,8 @@
 import * as actionTypes from "./actionTypes"
 
 const initialState: UserState = {
-  users: []
+  users: [],
+  message: { success: false, msg:[] }
 }
 
 const reducer = (
@@ -29,8 +30,10 @@ const reducer = (
         }
         
       case actionTypes.ADD_USERS_ERROR:
-        alert(action.message.msg)
-        return state;
+        return {
+          ...state,
+          message: action.message,
+        }
 
 
       case actionTypes.REMOVE_USER:

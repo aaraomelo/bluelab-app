@@ -6,7 +6,8 @@ interface IUser {
 }
 
 type UserState = {
-  users: IUser[]
+  users: IUser[],
+  message: StatusCreateUser
 }
 
 type UserAction = {

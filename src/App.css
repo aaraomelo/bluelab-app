@@ -71,6 +71,16 @@ main > h1 {
   border-radius: 10px;
 }
 
+
+.Error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #e06a6a;
+  border-radius: 10px;
+}
+
 .User:not(:last-child) {
   border-bottom: 2px solid #f5f6f7;
 }
