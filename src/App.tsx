@@ -2,7 +2,7 @@ import * as React from "react"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { User } from "./components/User"
 import { AddUser } from "./components/AddUser"
-import { Errors } from "./components/Errors"
+import { Messages } from "./components/Messages"
 
 import { addUser, removeUser, loadUsers } from "./store/actionCreators"
 import { Dispatch } from "redux"
@@ -32,10 +32,12 @@ const App: React.FC = () => {
 
   return (
     <main>
+      <h1>Menssagens</h1>
+      <Messages message={ message } />
+
       <h1>Adicione um usuário</h1>
       <AddUser saveUser={saveUser} />
-      <h1>Erros</h1>
-      <Errors message={ message } />
+
       <h1>Usuários adicionados</h1>
       {users.map((user: IUser) => (
         <User

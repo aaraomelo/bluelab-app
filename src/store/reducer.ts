@@ -2,7 +2,7 @@ import * as actionTypes from "./actionTypes"
 
 const initialState: UserState = {
   users: [],
-  message: { success: false, msg:[] }
+  message: { success: true, msg:[] }
 }
 
 const reducer = (
@@ -27,6 +27,7 @@ const reducer = (
         return {
           ...state,
           users: state.users.concat(newUser),
+          message: { success: true, msg:['Usuário cadastrado com sucesso!'] },
         }
         
       case actionTypes.ADD_USERS_ERROR:

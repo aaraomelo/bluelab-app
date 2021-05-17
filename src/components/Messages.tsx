@@ -4,9 +4,9 @@ type Props = {
   message: StatusCreateUser
 }
 
-export const Errors: React.FC<Props> = ({ message }) => {
+export const Messages: React.FC<Props> = ({ message }) => {
   return (
-    <div className="Error">
+    <div className="Error" style={{backgroundColor: message.success ? 'yellowgreen':'#e06a6a' }}>
       <div>
         {message.msg.map((msg: string)=>( 
           <h2>{msg}</h2>
