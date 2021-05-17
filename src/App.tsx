@@ -3,7 +3,7 @@ import { useSelector, shallowEqual, useDispatch } from "react-redux"
 import { User } from "./components/User"
 import { AddUser } from "./components/AddUser"
 import { Messages } from "./components/Messages"
-
+import { Container, Row, Col } from 'react-grid-system';
 import { addUser, removeUser, loadUsers, authUser } from "./store/actionCreators"
 import { Dispatch } from "redux"
 import "./App.css"
@@ -38,20 +38,39 @@ const App: React.FC = () => {
 
   return (
     <main>
-      <h1>Autenticação</h1>
-      <AuthUser authUser = {authenticateUser}/>
-      <h1>Menssagens</h1>
-      <Messages message={ message } />
-      <h1>Adicione um usuário</h1>
-      <AddUser saveUser={saveUser} />
-      <h1>Usuários adicionados</h1>
-      {users.map((user: IUser) => (
-        <User
-          key={user.cpf}
-          user={user}
-          removeUser={removeUser}
-        />
-      ))}
+      <Container>
+        <Row>
+        <Row>
+            <Col>
+              <h1>Adicione um usuário</h1>
+              <AddUser saveUser={saveUser} />
+            </Col>
+            <Col>
+              <h1>Usuários adicionados</h1>
+              {users.map((user: IUser) => (
+                <User
+                  key={user.cpf}
+                  user={user}
+                  removeUser={removeUser}
+                />
+              ))}
+            </Col>  
+          </Row>
+          <Row>
+            <Col>
+              <h1>Autenticação</h1>
+              <AuthUser authUser = {authenticateUser}/>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <h1>Menssagens</h1>
+              <Messages message={ message } />
+            </Col>
+          </Row>
+          
+        </Row>
+      </Container>
     </main>
   )
 }

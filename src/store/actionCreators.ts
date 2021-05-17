@@ -1,8 +1,7 @@
 import * as actionTypes from "./actionTypes"
 import usersService from "../services/user.service"
 import authService from "../services/auth.service"
-import store from './'
-
+    
 export async function loadUsers() {
     const users = await usersService.getAllUsers()
     const action: LoadUsersAction = {
