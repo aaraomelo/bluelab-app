@@ -7,7 +7,13 @@ interface IUser {
 
 type UserState = {
   users: IUser[],
-  message: StatusCreateUser
+  message: StatusCreateUser,
+  auth: boolean,
+  token: string
+}
+
+type Token = {
+  token: string
 }
 
 type UserAction = {
@@ -31,5 +37,19 @@ type AddUsersErrorAction = {
   message: StatusCreateUser
 }
 
+type Credentials = {
+  cpf: string
+  telefone: string
+}
+
+type AuthAction = {
+  type: string,
+  token: string
+}
+
+type AuthErrorAction = {
+  type: string,
+  message: StatusCreateUser
+}
 
 type DispatchType = (args: UserAction) => UserAction

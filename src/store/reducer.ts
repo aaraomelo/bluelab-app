@@ -2,7 +2,9 @@ import * as actionTypes from "./actionTypes"
 
 const initialState: UserState = {
   users: [],
-  message: { success: true, msg:[] }
+  message: { success: true, msg:[] },
+  auth: false,
+  token: '',
 }
 
 const reducer = (
@@ -10,7 +12,13 @@ const reducer = (
     action: any
   ): UserState => {
     switch (action.type) {
-
+      case actionTypes.AUTH_USER:
+        return {
+          ...state,
+          auth: true,
+          token: action.token,
+          message: { success: true, msg:['Autenticado com sucesso!'] },
+        }
       case actionTypes.LOAD_USERS:
         return {
           ...state,
@@ -36,6 +44,11 @@ const reducer = (
           message: action.message,
         }
 
+      case actionTypes.AUTH_USER_ERROR:
+        return {
+          ...state,
+          message: action.message,
+        }
 
       case actionTypes.REMOVE_USER:
         const updatedUsers: IUser[] = state.users.filter(

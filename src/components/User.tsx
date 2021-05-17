@@ -11,7 +11,7 @@ export const User: React.FC<Props> = ({ user, removeUser }) => {
   const dispatch: Dispatch<any> = useDispatch()
 
   const deleteUser = React.useCallback(
-    (article: IUser) => dispatch(removeUser(article)),
+    async (user: IUser) => dispatch(await removeUser(user)),
     [dispatch, removeUser]
   )
 

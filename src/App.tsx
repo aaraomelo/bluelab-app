@@ -4,9 +4,10 @@ import { User } from "./components/User"
 import { AddUser } from "./components/AddUser"
 import { Messages } from "./components/Messages"
 
-import { addUser, removeUser, loadUsers } from "./store/actionCreators"
+import { addUser, removeUser, loadUsers, authUser } from "./store/actionCreators"
 import { Dispatch } from "redux"
 import "./App.css"
+import { AuthUser } from "./components/AuthUser"
 
 const App: React.FC = () => {
   const users: readonly IUser[] = useSelector(
@@ -26,18 +27,23 @@ const App: React.FC = () => {
     [dispatch]
   )
 
+   const authenticateUser = React.useCallback(
+    async (credentials: Credentials) => dispatch(await authUser(credentials)),
+    [dispatch]
+  )
+
   React.useEffect(() => {
     (async () => dispatch(await loadUsers()))()
   }, [dispatch]);
 
   return (
     <main>
+      <h1>Autenticação</h1>
+      <AuthUser authUser = {authenticateUser}/>
       <h1>Menssagens</h1>
       <Messages message={ message } />
-
       <h1>Adicione um usuário</h1>
       <AddUser saveUser={saveUser} />
-
       <h1>Usuários adicionados</h1>
       {users.map((user: IUser) => (
         <User
@@ -46,7 +52,6 @@ const App: React.FC = () => {
           removeUser={removeUser}
         />
       ))}
-
     </main>
   )
 }
