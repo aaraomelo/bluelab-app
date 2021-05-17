@@ -13,6 +13,7 @@ const reducer = (
   ): UserState => {
     switch (action.type) {
       case actionTypes.AUTH_USER:
+        localStorage.setItem('token', action.token)
         return {
           ...state,
           auth: true,
@@ -57,6 +58,12 @@ const reducer = (
         return {
           ...state,
           users: updatedUsers,
+          message: {success: true, msg:['Usuário removido com sucesso!'] }
+        }
+      case actionTypes.REMOVE_USER_ERROR:
+        return {
+          ...state,
+          message: action.message,
         }
 
     }

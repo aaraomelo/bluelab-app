@@ -34,7 +34,7 @@ export const AuthUser: React.FC<Props> = ({ authUser }) => {
         onChange={handleCredentilasData}
       />
       <button disabled={credentials === undefined ? true : false}>
-        Add User
+        Autenticar
       </button>
     </form>
   )

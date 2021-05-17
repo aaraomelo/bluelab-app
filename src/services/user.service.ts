@@ -1,6 +1,12 @@
 import { config } from '../config';
 import axios, { AxiosError, AxiosResponse } from 'axios';
+import store from '../store'
+
+
 const usersService = {
+  Authorization: ()=>({
+      Authorization: `Bearer ${store.getState().token}`,
+  }),
 
   url: `${config.baseurl}${config.prefix}/users`,
 
@@ -25,5 +31,17 @@ const usersService = {
         return Promise.reject(error.response?.data);
       });
   },
+
+  removeUser(cpf: string): Promise<StatusCreateUser> {
+    return axios
+      .delete(`${this.url}/${cpf}`, { data:{}, headers: {...this.Authorization()} })
+      .then((response: AxiosResponse<StatusCreateUser>) => {
+        return Promise.resolve(response.data);
+      })
+      .catch((error: AxiosError) => {
+        return Promise.reject(error.response?.data);
+      });
+  },
+
 };
 export default usersService

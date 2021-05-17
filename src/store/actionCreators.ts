@@ -1,6 +1,7 @@
 import * as actionTypes from "./actionTypes"
 import usersService from "../services/user.service"
 import authService from "../services/auth.service"
+import store from './'
 
 export async function loadUsers() {
     const users = await usersService.getAllUsers()
@@ -31,16 +32,25 @@ export async function addUser(user: IUser) {
 }
 
 export async function removeUser(user: IUser) {
-    
-    const action: UserAction = {
-        type: actionTypes.REMOVE_USER,
-        user,
-    }
-    return action
+    return await usersService.removeUser(user.cpf)
+        .then(() => {
+            const action: UserAction = {
+                type: actionTypes.REMOVE_USER,
+                user,
+            }
+            return action
+        })
+        .catch(()=>{
+            const action: RemoveUserErrorAction = {
+                type: actionTypes.REMOVE_USER_ERROR,
+                message: {success: false, msg:['É necessário autenticar!'] },
+            }
+            return action
+            
+        })
 }
 
 export function updateUser(user: IUser) {
-
     const action: UserAction = {
         type: actionTypes.UPDATE_USER,
         user,

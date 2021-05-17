@@ -52,4 +52,9 @@ type AuthErrorAction = {
   message: StatusCreateUser
 }
 
+type RemoveUserErrorAction = {
+  type: string,
+  message: StatusCreateUser
+}
+
 type DispatchType = (args: UserAction) => UserAction
