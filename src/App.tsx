@@ -65,7 +65,7 @@ const App: React.FC = () => {
           </Row>
           <Row>
             <Col>
-              <h1>Autenticação</h1>
+              <h1>Autentique-se</h1>
               <AuthUser authUser = {authenticateUser}/>
             </Col>
             <Col>
@@ -75,7 +75,7 @@ const App: React.FC = () => {
           </Row>
           <Row>
             <Col>
-              <h1>Menssagens</h1>
+              <h1>Mensagens</h1>
               <Messages message={ message } />
             </Col>
           </Row>
