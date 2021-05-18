@@ -5,6 +5,12 @@ const initialState: UserState = {
   message: { success: true, msg:[] },
   auth: false,
   token: '',
+  userFound:{ 
+    nome: '',
+    sobrenome: '',
+    telefone: '',
+    cpf: ''
+  }
 }
 
 const reducer = (
@@ -64,6 +70,18 @@ const reducer = (
         return {
           ...state,
           message: action.message,
+        }
+      case actionTypes.FIND_USER:
+        return {
+          ...state,
+          userFound: action.user,
+          message: {success: true, msg:['Usuário encontrado!'] }
+        }
+
+      case actionTypes.FIND_USER_ERROR:
+        return {
+          ...state,
+          message: action.message
         }
 
     }

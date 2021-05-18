@@ -9,7 +9,8 @@ type UserState = {
   users: IUser[],
   message: StatusCreateUser,
   auth: boolean,
-  token: string
+  token: string,
+  userFound: IUser
 }
 
 type Token = {
@@ -42,6 +43,10 @@ type Credentials = {
   telefone: string
 }
 
+type findUser = {
+  cpf: string
+}
+
 type AuthAction = {
   type: string,
   token: string
@@ -53,6 +58,16 @@ type AuthErrorAction = {
 }
 
 type RemoveUserErrorAction = {
+  type: string,
+  message: StatusCreateUser
+}
+
+type findUserAction = {
+  type: string,
+  user:IUser
+}
+
+type findUserErrorAction = {
   type: string,
   message: StatusCreateUser
 }

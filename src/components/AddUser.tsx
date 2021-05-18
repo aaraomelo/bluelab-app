@@ -46,7 +46,7 @@ export const AddUser: React.FC<Props> = ({ saveUser }) => {
         onChange={handleUserData}
       />
       <button disabled={user === undefined ? true : false}>
-        Add User
+        Adcionar
       </button>
     </form>
   )

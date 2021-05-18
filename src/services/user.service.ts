@@ -43,5 +43,16 @@ const usersService = {
       });
   },
 
+  findUser(cpf: string): Promise<any> {
+    return axios
+      .get(`${this.url}/${cpf}`)
+      .then((response: AxiosResponse<any>) => {
+        return Promise.resolve(response.data);
+      })
+      .catch((error: AxiosError) => {
+        return Promise.reject(error.response?.data);
+      });
+  },
+
 };
 export default usersService

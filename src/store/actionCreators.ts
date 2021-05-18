@@ -76,3 +76,22 @@ export async function authUser(credentials: Credentials) {
     })
 }
 
+export async function findUser(info: findUser) {
+    return await usersService.findUser(info.cpf)
+    .then((response)=> {
+        const action: findUserAction = {
+            type: actionTypes.FIND_USER,
+            user: response.msg.user
+        }
+        return action
+    })
+    .catch((error) => {
+        console.log(error);
+        const action: findUserErrorAction = {
+            type: actionTypes.FIND_USER_ERROR,
+            message: error
+        }
+        return action
+    })
+}
+

@@ -9,7 +9,7 @@ export const Messages: React.FC<Props> = ({ message }) => {
     <div className="Error" style={{backgroundColor: message.success ? 'yellowgreen':'#e06a6a' }}>
       <div>
         {message.msg.map((msg: string)=>( 
-          <h2>{msg}</h2>
+          <h2 key={msg}>{msg}</h2>
         ))}
       </div>
     </div>
